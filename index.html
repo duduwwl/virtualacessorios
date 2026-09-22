@@ -3,286 +3,116 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#07080a">
-  <meta name="description" content="Virtual Lavras — celulares, acessórios, eletrônicos, brinquedos, camisas e itens geek no centro de Lavras.">
-  <title>Virtual Lavras | Acessórios, eletrônicos e brinquedos</title>
+  <meta name="theme-color" content="#dfff36">
+  <meta name="description" content="Compre eletrônicos, acessórios, brinquedos e itens geek na Virtual Lavras. Faça seu pedido online e retire no centro de Lavras.">
+  <title>Virtual Lavras | Loja online</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop stop-color='%2300d3ff'/%3E%3Cstop offset='.4' stop-color='%23ef43c6'/%3E%3Cstop offset='.72' stop-color='%23ff6b27'/%3E%3Cstop offset='1' stop-color='%23dfff36'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='%2307080a'/%3E%3Cpath d='M13 15h12l8 29 9-18 9-11h-13l-8 14-4-14z' fill='url(%23g)'/%3E%3C/svg%3E">
-  <style>
-    :root {
-      --ink: #090b0e;
-      --paper: #f5f5f2;
-      --white: #fff;
-      --muted: #6e737c;
-      --line: rgba(9, 11, 14, .12);
-      --cyan: #00d3ff;
-      --pink: #f044c7;
-      --orange: #ff6828;
-      --lime: #dfff36;
-      --radius: 24px;
-      --shadow: 0 22px 55px rgba(0,0,0,.14);
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.55 "DM Sans", sans-serif; overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    img { display: block; max-width: 100%; }
-    .shell { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
-    .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 18px; font-weight: 800; font-size: .76rem; letter-spacing: .14em; text-transform: uppercase; }
-    .eyebrow::before { content: ""; width: 24px; height: 2px; background: currentColor; }
-    .btn { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 22px; border: 1px solid transparent; border-radius: 999px; font-weight: 800; transition: transform .2s, background .2s, border-color .2s; cursor: pointer; }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--lime); color: var(--ink); }
-    .btn-ghost { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.25); color: var(--white); }
-    .icon { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-
-    .announcement { background: var(--lime); color: var(--ink); min-height: 34px; display: grid; place-items: center; font-size: .78rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; text-align: center; padding: 7px 14px; }
-    .header { position: absolute; z-index: 20; top: 34px; left: 0; width: 100%; color: var(--white); }
-    .nav { min-height: 84px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,.16); }
-    .brand { display: inline-flex; align-items: center; gap: 12px; font-family: Manrope, sans-serif; font-size: 1.38rem; font-weight: 800; letter-spacing: -.04em; }
-    .brand-mark { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 12px; background: linear-gradient(135deg, var(--cyan), var(--pink) 42%, var(--orange) 72%, var(--lime)); color: var(--ink); font: 900 1.35rem/1 Manrope, sans-serif; transform: skewX(-8deg); }
-    .brand-mark span { transform: skewX(8deg); }
-    .nav-links { display: flex; gap: 30px; align-items: center; font-size: .92rem; font-weight: 700; }
-    .nav-links a:not(.nav-cta) { color: rgba(255,255,255,.78); }
-    .nav-links a:hover { color: var(--white); }
-    .nav-cta { padding: 11px 17px; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; }
-    .menu-btn { display: none; width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.25); background: transparent; color: white; border-radius: 50%; }
-
-    .hero { position: relative; min-height: 780px; background: #07080a; color: white; overflow: hidden; }
-    .hero::after { content: ""; position: absolute; inset: auto -8% -18% 40%; height: 65%; background: radial-gradient(circle, rgba(240,68,199,.18), transparent 65%); pointer-events: none; }
-    .hero-media { position: absolute; inset: 0; }
-    .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .87; }
-    .hero-media::before { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(90deg, rgba(6,7,9,.99) 0%, rgba(6,7,9,.88) 31%, rgba(6,7,9,.18) 64%, rgba(6,7,9,.16) 100%), linear-gradient(0deg, #07080a 0%, transparent 26%); }
-    .hero-content { position: relative; z-index: 3; padding-top: 190px; padding-bottom: 152px; }
-    .hero-copy { max-width: 640px; }
-    .hero .eyebrow { color: var(--lime); }
-    h1, h2, h3 { font-family: Manrope, sans-serif; margin: 0; letter-spacing: -.055em; line-height: 1.02; }
-    h1 { max-width: 640px; font-size: clamp(3.3rem, 7.3vw, 6.7rem); font-weight: 800; }
-    h1 em { display: block; font-style: normal; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,.85); }
-    .hero-text { max-width: 510px; color: rgba(255,255,255,.7); font-size: 1.08rem; margin: 26px 0 32px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
-    .hero-note { position: absolute; right: 0; bottom: 116px; z-index: 3; display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,.72); font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 700; transform: rotate(-90deg) translateX(100%); transform-origin: right bottom; }
-    .hero-note::before { content: ""; width: 54px; height: 1px; background: currentColor; }
-
-    .category-bar { position: relative; z-index: 5; margin-top: -66px; }
-    .category-inner { background: white; border-radius: var(--radius); box-shadow: var(--shadow); display: grid; grid-template-columns: 1.3fr repeat(4, 1fr); overflow: hidden; }
-    .category-intro { padding: 26px 30px; background: var(--lime); }
-    .category-intro strong { display: block; font: 800 1.2rem/1.15 Manrope, sans-serif; letter-spacing: -.03em; }
-    .category-intro span { display: block; margin-top: 6px; font-size: .82rem; }
-    .category-link { min-height: 118px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between; border-left: 1px solid var(--line); transition: background .2s; }
-    .category-link:hover { background: #f0f0ec; }
-    .category-link .number { color: #9a9da2; font: 700 .72rem Manrope, sans-serif; }
-    .category-link .label { display: flex; align-items: flex-end; justify-content: space-between; font-weight: 800; }
-    .category-link .arrow { font-size: 1.25rem; }
-
-    section { padding: 112px 0; }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 42px; }
-    .section-head h2 { max-width: 720px; font-size: clamp(2.35rem, 5vw, 4.2rem); font-weight: 800; }
-    .section-head p { max-width: 355px; margin: 0 0 5px; color: var(--muted); }
-    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
-    .filter { border: 1px solid var(--line); background: transparent; padding: 10px 16px; border-radius: 999px; color: #5c6169; font-weight: 700; cursor: pointer; transition: .2s; }
-    .filter.active, .filter:hover { background: var(--ink); color: white; border-color: var(--ink); }
-    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .product { min-height: 290px; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; border-radius: 20px; overflow: hidden; isolation: isolate; transition: transform .25s, box-shadow .25s; }
-    .product:hover { transform: translateY(-5px); box-shadow: 0 18px 35px rgba(0,0,0,.12); }
-    .product.hidden { display: none; }
-    .product::before, .product::after { content: ""; position: absolute; border-radius: 50%; z-index: -1; filter: blur(1px); }
-    .product::before { width: 180px; height: 180px; right: -50px; top: -40px; background: rgba(255,255,255,.28); }
-    .product::after { width: 120px; height: 120px; left: -45px; bottom: -45px; background: rgba(0,0,0,.08); }
-    .product.dark { background: #12151a; color: white; }
-    .product.cyan { background: #c8f6ff; }
-    .product.pink { background: #ffd5f5; }
-    .product.orange { background: #ffdac5; }
-    .product.lime { background: #e6ff70; }
-    .product.stone { background: #e4e4df; }
-    .product-icon { width: 62px; height: 62px; display: grid; place-items: center; border-radius: 18px; background: rgba(255,255,255,.55); backdrop-filter: blur(8px); }
-    .dark .product-icon { background: rgba(255,255,255,.09); }
-    .product-icon .icon { width: 34px; height: 34px; }
-    .product small { display: block; margin-bottom: 7px; opacity: .65; font-size: .72rem; letter-spacing: .12em; font-weight: 800; text-transform: uppercase; }
-    .product h3 { font-size: 1.45rem; letter-spacing: -.04em; }
-    .product p { margin: 9px 0 0; font-size: .9rem; opacity: .68; }
-    .product-cta { margin-top: 22px; display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; font-weight: 800; }
-
-    .visit { padding-top: 0; }
-    .visit-card { position: relative; background: var(--ink); color: white; border-radius: 30px; overflow: hidden; display: grid; grid-template-columns: 1.15fr .85fr; min-height: 480px; }
-    .visit-copy { padding: clamp(42px, 7vw, 84px); }
-    .visit-copy .eyebrow { color: var(--cyan); }
-    .visit-copy h2 { font-size: clamp(2.5rem, 5vw, 4.7rem); }
-    .visit-copy > p { color: rgba(255,255,255,.62); max-width: 520px; }
-    .info-list { margin: 34px 0; display: grid; gap: 14px; }
-    .info-row { display: flex; align-items: flex-start; gap: 13px; }
-    .info-row .icon { flex: 0 0 auto; color: var(--lime); margin-top: 2px; }
-    .info-row span { color: rgba(255,255,255,.72); }
-    .visit-art { position: relative; min-height: 360px; background: linear-gradient(145deg, var(--cyan), var(--pink) 38%, var(--orange) 69%, var(--lime)); overflow: hidden; }
-    .visit-art::before { content: "V"; position: absolute; inset: 50% auto auto 50%; transform: translate(-50%, -52%) skewX(-8deg); font: 900 clamp(13rem, 27vw, 27rem)/1 Manrope, sans-serif; color: rgba(8,10,13,.88); letter-spacing: -.14em; }
-    .visit-art::after { content: "LAVRAS • MG"; position: absolute; right: 24px; bottom: 24px; color: var(--ink); font-weight: 900; letter-spacing: .14em; font-size: .72rem; }
-
-    .contact { background: var(--lime); padding: 84px 0; }
-    .contact-inner { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px; }
-    .contact h2 { font-size: clamp(2.25rem, 5vw, 4.5rem); max-width: 800px; }
-    .contact p { margin: 18px 0 0; max-width: 620px; }
-    .contact .btn { background: var(--ink); color: white; min-width: 200px; }
-    footer { background: #07080a; color: white; padding: 44px 0 26px; }
-    .footer-top { display: flex; justify-content: space-between; align-items: center; gap: 30px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,.12); }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 22px; color: rgba(255,255,255,.64); font-size: .9rem; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 24px; color: rgba(255,255,255,.4); font-size: .78rem; }
-
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; transition: none; } }
-
-    @media (max-width: 900px) {
-      .shell { width: min(100% - 28px, 1180px); }
-      .nav { min-height: 72px; }
-      .nav-links { position: absolute; top: 82px; left: 14px; right: 14px; display: none; padding: 18px; border-radius: 18px; background: rgba(9,11,14,.97); flex-direction: column; align-items: stretch; gap: 5px; box-shadow: var(--shadow); }
-      .nav-links.open { display: flex; }
-      .nav-links a { padding: 12px; }
-      .menu-btn { display: grid; place-items: center; }
-      .hero { min-height: 760px; }
-      .hero-media img { object-position: 63% center; }
-      .hero-media::before { background: linear-gradient(90deg, rgba(6,7,9,.98) 0%, rgba(6,7,9,.78) 56%, rgba(6,7,9,.35)), linear-gradient(0deg, #07080a 0%, transparent 45%); }
-      .hero-content { padding-top: 170px; }
-      .hero-copy { max-width: 570px; }
-      .hero-note { display: none; }
-      .category-inner { grid-template-columns: repeat(2, 1fr); }
-      .category-intro { grid-column: span 2; }
-      .category-link { border-top: 1px solid var(--line); min-height: 104px; }
-      .section-head { align-items: start; flex-direction: column; }
-      .product-grid { grid-template-columns: repeat(2, 1fr); }
-      .visit-card { grid-template-columns: 1fr; }
-      .visit-art { min-height: 300px; }
-      .contact-inner { grid-template-columns: 1fr; }
-      .contact .btn { width: fit-content; }
-    }
-    @media (max-width: 560px) {
-      h1 { font-size: clamp(3rem, 16vw, 4.8rem); }
-      .hero { min-height: 750px; }
-      .hero-content { padding-top: 156px; }
-      .hero-media img { object-position: 69% center; opacity: .66; }
-      .hero-text { font-size: 1rem; }
-      .hero-actions .btn { width: 100%; }
-      .category-bar { margin-top: -46px; }
-      .category-inner { border-radius: 20px; }
-      .category-link { padding: 18px; }
-      section { padding: 82px 0; }
-      .section-head { margin-bottom: 32px; }
-      .product-grid { grid-template-columns: 1fr; }
-      .product { min-height: 250px; }
-      .visit-copy { padding: 36px 24px; }
-      .visit-art { min-height: 240px; }
-      .footer-top, .footer-bottom { align-items: flex-start; flex-direction: column; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/app.js" defer></script>
 </head>
 <body>
-  <div class="announcement">Loja física no centro de Lavras • Fale com a gente pelo WhatsApp</div>
-  <header class="header">
-    <div class="shell nav">
-      <a class="brand" href="#inicio" aria-label="Virtual Lavras — início"><span class="brand-mark"><span>V</span></span>virtual<span style="font-size:.5em;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-left:-8px">LAVRAS</span></a>
-      <nav class="nav-links" id="nav-links" aria-label="Navegação principal">
-        <a href="#categorias">Categorias</a><a href="#loja">A loja</a><a href="#contato">Contato</a>
-        <a class="nav-cta" href="https://instagram.com/virtuallavras" target="_blank" rel="noreferrer">Instagram ↗</a>
-      </nav>
-      <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menu">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-      </button>
+  <div class="announcement">Retire grátis na loja • Rua Dr. Francisco Salles, 610</div>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="#inicio" aria-label="Virtual Lavras — início"><span class="brand-mark">V</span><span>virtual<small>LAVRAS</small></span></a>
+      <nav aria-label="Navegação principal"><a href="#catalogo">Catálogo</a><a href="#como-comprar">Como comprar</a><a href="#loja">A loja</a></nav>
+      <button class="cart-trigger" type="button" aria-label="Abrir sacola"><span aria-hidden="true">▢</span> Sacola <b id="cart-count">0</b></button>
     </div>
   </header>
 
   <main>
     <section class="hero" id="inicio">
-      <div class="hero-media"><img src="assets/hero-virtual.png" alt="Seleção de eletrônicos, acessórios e colecionáveis em uma loja moderna"></div>
-      <div class="shell hero-content">
+      <div class="shell hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Tudo que você curte, bem perto</p>
-          <h1>Seu próximo <em>favorito</em> está aqui.</h1>
-          <p class="hero-text">Celulares, acessórios, eletrônicos, brinquedos, camisas e itens geek em uma seleção sempre cheia de novidades.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="https://wa.me/5535991952705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20ver%20as%20novidades." target="_blank" rel="noreferrer">
-              <svg class="icon" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.4-4.1A8 8 0 1 1 20 11.5Z"/><path d="M8.7 8.5c.4 2.1 2.1 3.8 4.2 4.3l1.2-1.2c.2-.2.5-.2.7-.1l2 .9v2.1c0 .4-.3.8-.7.8-4.3.1-7.8-3.4-7.8-7.7 0-.4.3-.7.8-.7h2l.9 2c.1.2 0 .5-.1.7l-1.2 1.2"/></svg>
-              Chamar no WhatsApp
-            </a>
-            <a class="btn btn-ghost" href="#categorias">Explorar categorias ↓</a>
-          </div>
+          <p class="eyebrow">Loja online • Retirada em Lavras</p>
+          <h1>Escolha.<br><em>Coloque na sacola.</em><br>Passe para buscar.</h1>
+          <p>Eletrônicos, acessórios, brinquedos e itens geek. Monte seu pedido pelo site e pague somente na retirada.</p>
+          <a class="text-link" href="#catalogo">Explorar catálogo <span>↓</span></a>
+        </div>
+        <div class="hero-media">
+          <img src="assets/hero-virtual.png" alt="Eletrônicos e colecionáveis da Virtual Lavras">
+          <div class="hero-stamp"><strong>+8</strong><span>itens no<br>catálogo</span></div>
         </div>
       </div>
-      <div class="shell hero-note">Rua Dr. Francisco Salles, 610</div>
     </section>
 
-    <div class="category-bar shell" aria-label="Principais categorias">
-      <div class="category-inner">
-        <div class="category-intro"><strong>Tem de tudo.<br>Tem na Virtual.</strong><span>Escolha uma categoria</span></div>
-        <a class="category-link" href="#categorias" data-filter-link="eletronicos"><span class="number">01</span><span class="label">Eletrônicos <span class="arrow">↗</span></span></a>
-        <a class="category-link" href="#categorias" data-filter-link="acessorios"><span class="number">02</span><span class="label">Acessórios <span class="arrow">↗</span></span></a>
-        <a class="category-link" href="#categorias" data-filter-link="brinquedos"><span class="number">03</span><span class="label">Brinquedos <span class="arrow">↗</span></span></a>
-        <a class="category-link" href="#categorias" data-filter-link="geek"><span class="number">04</span><span class="label">Geek & camisas <span class="arrow">↗</span></span></a>
+    <section class="benefits" id="como-comprar" aria-label="Como comprar">
+      <div class="shell benefits-grid">
+        <div><span class="benefit-icon">◇</span><p><strong>Compre no site</strong><small>Monte o pedido na hora</small></p></div>
+        <div><span class="benefit-icon">⌖</span><p><strong>Retire no centro</strong><small>Rua Dr. Francisco Salles, 610</small></p></div>
+        <div><span class="benefit-icon">▣</span><p><strong>Pague na retirada</strong><small>Cartão ou dinheiro</small></p></div>
       </div>
-    </div>
+    </section>
 
-    <section id="categorias">
+    <section class="catalog" id="catalogo">
       <div class="shell">
-        <div class="section-head reveal">
-          <div><p class="eyebrow">Vitrine Virtual</p><h2>Uma loja, muitos mundos.</h2></div>
-          <p>Encontre o que combina com você e confirme modelos, cores e disponibilidade direto pelo WhatsApp.</p>
+        <div class="section-heading">
+          <div><p class="eyebrow dark">Catálogo Virtual</p><h2>O que você vai<br>levar hoje?</h2></div>
+          <p>Produtos selecionados para presentear, curtir e facilitar sua rotina.</p>
         </div>
-        <div class="filters reveal" aria-label="Filtrar categorias">
-          <button class="filter active" data-filter="todos">Ver tudo</button><button class="filter" data-filter="eletronicos">Eletrônicos</button><button class="filter" data-filter="acessorios">Acessórios</button><button class="filter" data-filter="brinquedos">Brinquedos</button><button class="filter" data-filter="geek">Geek & camisas</button>
-        </div>
-        <div class="product-grid">
-          <article class="product dark reveal" data-category="eletronicos"><div class="product-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><div><small>Eletrônicos</small><h3>Smartphones</h3><p>Modelos e novidades para seu dia a dia.</p><a class="product-cta" href="https://wa.me/5535991952705?text=Ol%C3%A1%21%20Quero%20saber%20sobre%20os%20smartphones%20dispon%C3%ADveis." target="_blank" rel="noreferrer">Consultar no WhatsApp →</a></div></article>
-          <article class="product cyan reveal" data-category="acessorios"><div class="product-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14h3v6H5a1 1 0 0 1-1-1v-5Zm16 0h-3v6h2a1 1 0 0 0 1-1v-5Z"/></svg></div><div><small>Acessórios</small><h3>Áudio</h3><p>Fones, caixas de som e muito mais.</p><a class="product-cta" href="https://wa.me/5535991952705?text=Ol%C3%A1%21%20Quero%20ver%20as%20op%C3%A7%C3%B5es%20de%20%C3%A1udio." target="_blank" rel="noreferrer">Consultar no WhatsApp →</a></div></article>
-          <article class="product pink reveal" data-category="brinquedos"><div class="product-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M8 9h8l3 5v5H5v-5l3-5Z"/><path d="M9 9V6h6v3M8 19v2m8-2v2M9 14h.01M15 14h.01"/></svg></div><div><small>Brinquedos</small><h3>Diversão para valer</h3><p>Escolhas que transformam qualquer dia.</p><a class="product-cta" href="https://wa.me/5535991952705?text=Ol%C3%A1%21%20Quero%20ver%20os%20brinquedos%20dispon%C3%ADveis." target="_blank" rel="noreferrer">Consultar no WhatsApp →</a></div></article>
-          <article class="product lime reveal" data-category="geek"><div class="product-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M8 3h8l1 3 3 2-2 4v8H6v-8L4 8l3-2 1-3Z"/><path d="M9 3c.4 2 1.4 3 3 3s2.6-1 3-3"/></svg></div><div><small>Camisas</small><h3>Vista sua paixão</h3><p>Futebol e estilos para torcer junto.</p><a class="product-cta" href="https://wa.me/5535991952705?text=Ol%C3%A1%21%20Quero%20ver%20as%20camisas%20dispon%C3%ADveis." target="_blank" rel="noreferrer">Consultar no WhatsApp →</a></div></article>
-          <article class="product orange reveal" data-category="geek"><div class="product-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M8 8h8l2 4v7H6v-7l2-4Z"/><path d="M9 8V5h6v3M9 14h.01M15 14h.01M9 19v2m6-2v2"/></svg></div><div><small>Colecionáveis</small><h3>Universo geek</h3><p>Figures, personagens e presentes marcantes.</p><a class="product-cta" href="https://wa.me/5535991952705?text=Ol%C3%A1%21%20Quero%20ver%20os%20itens%20geek%20e%20colecion%C3%A1veis." target="_blank" rel="noreferrer">Consultar no WhatsApp →</a></div></article>
-          <article class="product stone reveal" data-category="acessorios"><div class="product-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="3"/><path d="m8 10 2 2-2 2m8-4v4M14 12h4"/></svg></div><div><small>Acessórios</small><h3>Games</h3><p>Controles e acessórios para sua jogatina.</p><a class="product-cta" href="https://wa.me/5535991952705?text=Ol%C3%A1%21%20Quero%20ver%20os%20acess%C3%B3rios%20para%20games." target="_blank" rel="noreferrer">Consultar no WhatsApp →</a></div></article>
-          <article class="product cyan reveal" data-category="acessorios"><div class="product-icon"><svg class="icon" viewBox="0 0 24 24"><path d="M8 4h8v3l3 3v8a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-8l3-3V4Z"/><path d="M8 7h8M8 13h8"/></svg></div><div><small>Acessórios</small><h3>Capas & proteção</h3><p>Seu celular protegido com personalidade.</p><a class="product-cta" href="https://wa.me/5535991952705?text=Ol%C3%A1%21%20Quero%20ver%20capas%20e%20acess%C3%B3rios%20para%20celular." target="_blank" rel="noreferrer">Consultar no WhatsApp →</a></div></article>
-          <article class="product dark reveal" data-category="eletronicos"><div class="product-icon"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 21h8M12 19v2M7 9h4v4H7zM14 9h3m-3 4h3"/></svg></div><div><small>Eletrônicos</small><h3>Utilidades</h3><p>Tecnologia prática para casa e rotina.</p><a class="product-cta" href="https://wa.me/5535991952705?text=Ol%C3%A1%21%20Quero%20ver%20as%20utilidades%20eletr%C3%B4nicas." target="_blank" rel="noreferrer">Consultar no WhatsApp →</a></div></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="visit" id="loja">
-      <div class="shell visit-card reveal">
-        <div class="visit-copy"><p class="eyebrow">Visite a Virtual</p><h2>Bem no centro de Lavras.</h2><p>Venha conhecer a seleção da loja ou chame antes para confirmar o item que você procura.</p>
-          <div class="info-list">
-            <div class="info-row"><svg class="icon" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Rua Doutor Francisco Salles, 610<br>Lavras, Minas Gerais</span></div>
-            <div class="info-row"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.4 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span>(35) 99195-2705</span></div>
+        <div class="catalog-toolbar">
+          <div class="filters" role="tablist" aria-label="Categorias">
+            <button class="filter active" data-filter="todos" role="tab" aria-selected="true">Tudo</button>
+            <button class="filter" data-filter="eletronicos" role="tab">Eletrônicos</button>
+            <button class="filter" data-filter="acessorios" role="tab">Acessórios</button>
+            <button class="filter" data-filter="brinquedos" role="tab">Brinquedos</button>
+            <button class="filter" data-filter="geek" role="tab">Geek & camisas</button>
           </div>
-          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=Rua%20Doutor%20Francisco%20Salles%2C%20610%2C%20Lavras%2C%20Minas%20Gerais" target="_blank" rel="noreferrer">Traçar rota <span>↗</span></a>
+          <label class="search"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Buscar no catálogo" aria-label="Buscar no catálogo"></label>
         </div>
-        <div class="visit-art" aria-hidden="true"></div>
+        <div class="product-grid" id="product-grid" aria-live="polite"></div>
+        <div class="empty-state" id="empty-state" hidden><span>⌕</span><h3>Nenhum produto encontrado</h3><p>Tente outro termo ou escolha uma categoria diferente.</p></div>
       </div>
     </section>
 
-    <section class="contact" id="contato">
-      <div class="shell contact-inner reveal"><div><p class="eyebrow">Fale com a gente</p><h2>Procurando algo específico?</h2><p>Mande uma mensagem e consulte modelos, cores e disponibilidade.</p></div><a class="btn" href="https://wa.me/5535991952705?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20estou%20procurando..." target="_blank" rel="noreferrer">Abrir WhatsApp ↗</a></div>
+    <section class="location" id="loja">
+      <div class="shell location-card">
+        <div><p class="eyebrow">Virtual Lavras</p><h2>Compre online.<br>Busque pertinho.</h2><p>Finalize sua seleção e leve o número do pedido para retirar na loja.</p></div>
+        <div class="location-details"><span class="pin">⌖</span><div><strong>Rua Doutor Francisco Salles, 610</strong><small>Lavras, Minas Gerais</small></div><a href="https://www.google.com/maps/search/?api=1&query=Rua%20Doutor%20Francisco%20Salles%2C%20610%2C%20Lavras%2C%20Minas%20Gerais" target="_blank" rel="noreferrer">Ver no mapa ↗</a></div>
+      </div>
     </section>
   </main>
 
-  <footer><div class="shell"><div class="footer-top"><a class="brand" href="#inicio"><span class="brand-mark"><span>V</span></span>virtual</a><div class="footer-links"><a href="#categorias">Categorias</a><a href="#loja">Endereço</a><a href="https://instagram.com/virtuallavras" target="_blank" rel="noreferrer">@virtuallavras</a><a href="tel:+5535991952705">(35) 99195-2705</a></div></div><div class="footer-bottom"><span>Virtual Lavras — acessórios, eletrônicos e brinquedos.</span><span>Lavras • MG</span></div></div></footer>
+  <footer><div class="shell footer-inner"><div class="brand inverse"><span class="brand-mark">V</span><span>virtual<small>LAVRAS</small></span></div><p>Eletrônicos, acessórios, brinquedos e muito mais.</p><span>Lavras • MG</span></div></footer>
 
-  <script>
-    const menuBtn = document.querySelector('#menu-btn');
-    const navLinks = document.querySelector('#nav-links');
-    menuBtn.addEventListener('click', () => { const open = navLinks.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', open); });
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { navLinks.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }));
+  <div class="drawer-overlay" id="drawer-overlay" hidden></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-labelledby="cart-title">
+    <div class="drawer-head"><div><h2 id="cart-title">Sua sacola</h2><p id="cart-description">Sua sacola ainda está vazia.</p></div><button class="icon-button" id="close-cart" aria-label="Fechar sacola">×</button></div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer" id="cart-footer" hidden>
+      <div><span>Subtotal</span><span id="cart-subtotal-small">R$ 0,00</span></div>
+      <div class="cart-total"><strong>Total</strong><strong id="cart-total">R$ 0,00</strong></div>
+      <p>Retirada grátis na loja. Pagamento no momento da retirada.</p>
+      <button class="primary-button full" id="checkout-button">Ir para o checkout <span>→</span></button>
+    </div>
+  </aside>
 
-    const filters = document.querySelectorAll('.filter');
-    const products = document.querySelectorAll('.product');
-    function applyFilter(category) {
-      filters.forEach(btn => btn.classList.toggle('active', btn.dataset.filter === category));
-      products.forEach(card => card.classList.toggle('hidden', category !== 'todos' && card.dataset.category !== category));
-    }
-    filters.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
-    document.querySelectorAll('[data-filter-link]').forEach(link => link.addEventListener('click', () => setTimeout(() => applyFilter(link.dataset.filterLink), 250)));
+  <dialog class="checkout-dialog" id="checkout-dialog">
+    <button class="icon-button dialog-close" id="close-checkout" aria-label="Fechar checkout">×</button>
+    <div id="checkout-content">
+      <div class="checkout-head"><p class="eyebrow dark">Finalizar pedido</p><h2>Confirme seus dados</h2><p>Seu número de pedido será gerado para retirada na Virtual Lavras.</p></div>
+      <form id="checkout-form">
+        <div class="checkout-grid">
+          <div class="form-fields">
+            <fieldset><legend>Seus dados</legend>
+              <label>Nome completo<input name="name" required minlength="3" autocomplete="name" placeholder="Como devemos chamar você?"></label>
+              <div class="field-row"><label>E-mail<input name="email" type="email" required autocomplete="email" placeholder="voce@email.com"></label><label>Celular<input name="phone" type="tel" required autocomplete="tel" placeholder="(35) 99999-9999"></label></div>
+            </fieldset>
+            <fieldset><legend>Pagamento na retirada</legend>
+              <div class="payment-grid"><label class="payment-option selected"><input type="radio" name="payment" value="Cartão" checked><span class="payment-icon">▣</span><span><strong>Cartão</strong><small>Crédito ou débito</small></span></label><label class="payment-option"><input type="radio" name="payment" value="Dinheiro"><span class="payment-icon">▤</span><span><strong>Dinheiro</strong><small>Pague no balcão</small></span></label></div>
+            </fieldset>
+          </div>
+          <aside class="order-summary"><h3>Resumo do pedido</h3><div id="summary-items"></div><hr><div class="summary-total"><span>Total</span><strong id="summary-total">R$ 0,00</strong></div><small>Retirada grátis na loja</small></aside>
+        </div>
+        <div class="checkout-actions"><button type="button" class="secondary-button" id="back-to-cart">Voltar à sacola</button><button type="submit" class="primary-button">Confirmar pedido <span>→</span></button></div>
+      </form>
+    </div>
+    <div class="success-state" id="success-state" hidden><span class="success-icon">✓</span><p class="eyebrow dark">Pedido concluído</p><h2>Tudo certo!</h2><p>Seu pedido foi montado. Apresente o número abaixo ao retirar os produtos na loja.</p><div class="order-code"><small>Número do pedido</small><strong id="order-number"></strong></div><button class="primary-button" id="finish-order">Voltar à loja</button></div>
+  </dialog>
 
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } }), { threshold: .12 });
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    } else document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-  </script>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
